@@ -13,13 +13,16 @@
 -if current_user.try(:admin?) && controller.is_a?(AdminController)
   =f.input :admin
   =f.input :active  
-%h5  
-  leave blank if you don't want to change your current password
 %br
+%h4  
+  Leave these fields blank if you don't want to change your current password:
 %br
 =f.input :password, :as => :password
 =f.input :password_confirmation, :as => :password  
-= f.submit  (text || 'Update your profile'), :class => 'btn btn-primary'
+%br
+%br
+%center
+  = f.submit  (text || 'Update my profile'), :class => 'btn btn-primary'
 
 
 

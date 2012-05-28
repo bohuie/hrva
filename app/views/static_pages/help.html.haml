@@ -1,19 +1,17 @@
-<% provide(:title, 'Help') %>
+= provide(:title, 'Help') 
   
-<div class="page-header">
-  <h1>Help</h1>
-</div>
+.page-header
+  %h1
+    Help
 
-<div class="row">
-  <div class="span20">
-  <p>
+%row
   This is the help page in the sample application.
   This is the help page in the sample application.
   This is the help page in the sample application.
   This is the help page in the sample application.
   This is the help page in the sample application.
-  </div>
-</div>
 
-<p>&nbsp;<p>
-<%= link_to 'Back to Home', root_path %>
+%p
+&nbsp;
+%p
+= link_to 'Back to Home', root_path
