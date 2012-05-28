@@ -1,13 +1,20 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
+gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
 gem 'json'
+gem 'haml'
+gem 'sass'
+gem "jquery-rails"
+gem 'devise'
+gem 'will_paginate', '~> 3.0.3'
+gem 'simple_form'
+gem 'country_select'
 
 # Gems used only for assets and not required
 # in production environments by default.

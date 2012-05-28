@@ -1,0 +1,17 @@
+-text ||= nil
+=f.input :username
+=f.input :first_name
+=f.input :last_name
+=f.input :email
+=f.input :city
+=f.input :province
+=f.input :country, :priority => ['Canada']
+=f.input :address, :input_html => {:rows => 4}
+=f.input :organization
+=f.input :current_role
+-if current_user.try(:admin?) && controller.is_a?(AdminController)
+  =f.input :admin
+  =f.input :active  
+=f.input :password, :as => :password, :required => true
+=f.input :password_confirmation, :as => :password, :required => true
+= f.submit  (text || 'Update your profile'), :class => 'btn btn-primary'

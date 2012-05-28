@@ -8,9 +8,9 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <p class="notice"><%= notice %>
     <%= render 'layouts/header' %>
     <div class="container">
+      <%= render :partial => 'shared/flashes' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>

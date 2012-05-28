@@ -1,0 +1,9 @@
+.page-header
+  %h1
+    Edit My Profile
+
+
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal', :method => :put }) do |f| 
+  
+  =render :partial => 'edit_form', :locals => {:f => f, :text => 'Update account'}
+
