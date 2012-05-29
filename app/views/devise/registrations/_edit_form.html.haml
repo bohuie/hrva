@@ -1,21 +1,37 @@
 -text ||= nil
-=f.input :current_password, :required => true
+%h3
+  Security
+.big
+  For privacy reasons, your current password is needed to update your profile.
+%p
+%br
 =f.input :username
+=f.input :current_password, :required => true
+%h3
+  Personal Information
+.big
+  Update any fields in this section as desired.
+%p
+%br
 =f.input :first_name
 =f.input :last_name
-=f.input :email
-=f.input :city
-=f.input :province
+=f.input :organization, :label => 'Affiliation'
+=f.input :current_role, :label => 'Position Title'
+=f.input :city, :label => 'Area or Region You Represent'
+=f.input :province, :label => 'State/Province'
 =f.input :country, :priority => ['Canada']
 =f.input :address, :input_html => {:rows => 4}
-=f.input :organization
-=f.input :current_role
 -if current_user.try(:admin?) && controller.is_a?(AdminController)
   =f.input :admin
   =f.input :active  
+=f.input :email
+=f.input :phone, :label => 'Contact Phone'
 %br
-%h4  
-  Leave these fields blank if you don't want to change your current password:
+%h3  
+  New Password
+.big
+  Leave these fields blank if you don't want to change your current password.
+%p
 %br
 =f.input :password, :as => :password
 =f.input :password_confirmation, :as => :password  

@@ -1,19 +1,37 @@
 -text ||= nil
-=f.input :username
-=f.input :email
-=f.input :password, :as => :password, :required => true
-=f.input :password_confirmation, :as => :password, :required => true
+%h3
+  Personal Information
+.big
+  Your information will only be used for the purposes of this HRVA and will be held in confidence.
+
+%p
+%br
 =f.input :first_name
 =f.input :last_name
-=f.input :current_role
-=f.input :organization
-=f.input :address, :input_html => {:rows => 4}
-=f.input :city
-=f.input :province
+=f.input :organization, :label => 'Affiliation'
+=f.input :current_role, :label => 'Position Title'
+-#f.input :address, :input_html => {:rows => 4}
+=f.input :city,     :label => 'Area or Region You Represent'
+=f.input :province, :label => 'State/Province'
 =f.input :country, :priority => ['Canada']
 -if current_user.try(:admin?) && controller.is_a?(AdminController)
   =f.input :admin
   =f.input :active  
+=f.input :email, :required => true
+=f.input :phone, :label => 'Contact Phone'
+
+%br
+%h3
+  Account Information
+.big
+  You must create a username and password. Please keep note of this information so that you may log in and out of the system in the future.
+%p
+%br
+
+=f.input :username
+=f.input :password, :as => :password, :required => true
+=f.input :password_confirmation, :as => :password, :required => true, :label => 'Re-Type Password'
+
 %br
 %br
 %center
