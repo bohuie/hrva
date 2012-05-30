@@ -6,7 +6,7 @@
 %p
 %br
 =f.input :username
--if !current_user.try(:admin?) || !controller.is_a?(AdminController)
+-if !controller.is_a?(AdminController)
   =f.input :current_password, :required => true
 %h3
   Personal Information
