@@ -1,0 +1,10 @@
+.page-header
+  %h1
+    Edit User Profile
+
+
+= simple_form_for( [:admin, @user], :html => {:class => 'form-horizontal', :method => :put }) do |f| 
+  
+  =render :partial => '/devise/registrations/edit_form', :locals => {:f => f, :text => 'Update Account'}
+
+
