@@ -8,6 +8,7 @@ NewApp::Application.routes.draw do
   match '/contact', :to => 'static_pages#contact'
   match '/options', :to => 'static_pages#options'
   match '/experts', :to => 'static_pages#experts'
+  match '/start',   :to => 'static_pages#start'
   
   
   namespace :admin do
