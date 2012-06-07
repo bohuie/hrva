@@ -3,12 +3,13 @@ NewApp::Application.routes.draw do
 
   root :to => 'static_pages#home'
 
-  match '/help',    :to => 'static_pages#help'
-  match '/about',   :to => 'static_pages#about'
-  match '/contact', :to => 'static_pages#contact'
-  match '/options', :to => 'static_pages#options'
-  match '/experts', :to => 'static_pages#experts'
-  match '/start',   :to => 'static_pages#start'
+  match '/help',         :to => 'static_pages#help'
+  match '/about',        :to => 'static_pages#about'
+  match '/contact',      :to => 'static_pages#contact'
+  match '/options',      :to => 'static_pages#options'
+  match '/experts',      :to => 'static_pages#experts'
+  match '/start',        :to => 'static_pages#start'
+  match '/references',   :to => 'static_pages#references'
   
   
   namespace :admin do
