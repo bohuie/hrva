@@ -1,0 +1,28 @@
+= provide(:title, 'Thank You')
+
+.page-header
+  %h2
+    Assessment for Region: Springfield
+
+.hero-unit
+  %center
+    %h2
+      Thank you for completing this HRVA! 
+    %p
+    %br
+      .big
+        Click finish to generate your report.  
+    %p
+      =button_to 'Finish', '#', :class=>'btn btn-large btn-primary'
+
+
+%p
+.big
+  Please note this assessment is only the first step in preparing your
+  area for hazards. Please check 
+  =link_to 'here', '#'
+  for information on how to proceed.
+  
+%p
+%br
+

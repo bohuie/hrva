@@ -9,12 +9,17 @@
 %p
   %b
     Title:
-    = @section.title 
+%p
+= @section.title 
 
 %p
+%br
   %b
     Description:
-    = @section.description 
+%p
+= @section.description 
+%p
+%br
 
 = link_to 'Edit Section', edit_section_path(@section) 
 %p

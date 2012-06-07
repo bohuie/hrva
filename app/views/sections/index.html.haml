@@ -4,25 +4,27 @@
   %h1
     Listing Sections
 
-%table
+%table{:cellpadding=>10, :border=>1}
   %tr
     %th
       Title
     %th
       Description
+    %th{:colspan=>3}
+      Actions 
 
-- @sections.each do |section| 
-  %tr
-    %td
-      = section.title 
-    %td
-      = section.description 
-    %td
-      = link_to 'Show', section 
-    %td
-      = link_to 'Edit', edit_section_path(section) 
-    %td
-      = link_to 'Destroy', section, confirm: 'Are you sure?', method: :delete 
+  - @sections.each do |section| 
+    %tr
+      %td
+        = section.title 
+      %td
+        = section.description 
+      %td
+        = link_to 'Show', section 
+      %td
+        = link_to 'Edit', edit_section_path(section) 
+      %td
+        = link_to 'Destroy', section, confirm: 'Are you sure?', method: :delete 
 
 %br 
 
