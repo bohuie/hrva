@@ -1,0 +1,22 @@
+= provide(:title, 'Show Section') 
+
+.page-header
+  %h1
+    Section Details
+
+=#<p id="notice"><%= notice %></p>
+
+%p
+  %b
+    Title:
+    = @section.title 
+
+%p
+  %b
+    Description:
+    = @section.description 
+
+= link_to 'Edit Section', edit_section_path(@section) 
+%p
+= link_to 'Back to Sections Listing', sections_path 
+%p

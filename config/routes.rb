@@ -1,4 +1,8 @@
 NewApp::Application.routes.draw do
+  resources :sections
+
+  resources :scetions
+
   devise_for :users
 
   root :to => 'static_pages#home'
@@ -10,6 +14,7 @@ NewApp::Application.routes.draw do
   match '/experts',      :to => 'static_pages#experts'
   match '/start',        :to => 'static_pages#start'
   match '/references',   :to => 'static_pages#references'
+  match '/test',         :to => 'static_pages#test' 
   
   
   namespace :admin do

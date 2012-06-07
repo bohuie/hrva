@@ -1,0 +1,11 @@
+= provide(:title, 'New Section') 
+
+.page-header
+  %h1
+    Create New Section
+
+= simple_form_for(@section) do |f| 
+  = f.error_notification 
+  = render :partial => 'form', :locals=>{:f=>f}
+
+= link_to 'Back to Sections Listing', sections_path 

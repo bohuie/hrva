@@ -1,0 +1,62 @@
+= provide(:title, 'Test')
+
+.page-header
+  %h2
+    Assessment for Region: Springfield
+
+%ul.nav.nav-tabs
+  %li.active
+    =link_to 'Area Profile', '#'
+  %li 
+    =link_to 'Hazards', '#'
+  %li 
+    =link_to 'Preparedness', '#'
+  %li 
+    =link_to 'Accidental and Human Caused Hazards', '#'
+  %li 
+    =link_to 'Compounded Risks and Hazards', '#'
+
+
+%p
+
+.right
+  %table
+    %tr
+      %td{:valign=>'top'}
+        Number of questions completed: XX
+      %td{:valign=>'top'}
+        &nbsp; 
+      %td{:valign=>'top'}
+        .span2
+          .progress.progress-info.progress-striped
+            .bar{ :style=>"width: 75%" }
+
+%br
+%p
+%br
+.well
+  %h3 
+    Question: text text text
+  
+  %p
+  .big 
+    response option 
+    %p
+    response option 
+    %p
+    response option 
+    %p
+    response option 
+
+%p
+%br
+.left
+  =button_to 'Previous', '#', :class=>'btn btn-primary'
+.right
+  =button_to 'Next', '#', :class=>'btn btn-primary'
+
+%p
+%br
+%br
+.right
+  =button_to 'Save and Exit', '#', :class=>'btn btn-inverse'

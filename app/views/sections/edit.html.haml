@@ -1,0 +1,14 @@
+= provide(:title, 'Edit Section') 
+
+.page-header
+  %h1
+    Edit Section 
+
+= simple_form_for(@section) do |f| 
+  = f.error_notification 
+  = render :partial => 'form', :locals=>{:f=>f}
+
+= link_to 'Show Section', @section 
+%p
+= link_to 'Back to Sections Listing', sections_path 
+%p
