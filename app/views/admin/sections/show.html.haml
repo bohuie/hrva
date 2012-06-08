@@ -6,6 +6,15 @@
 
 =#<p id="notice"><%= notice %></p>
 
+.right
+  = link_to 'Edit Section', edit_admin_section_path(@section) 
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Sections Listing', admin_sections_path 
+%p
+%br
+%br
+
 %p
   %b
     Title:
@@ -18,10 +27,3 @@
     Description:
 %p
 = @section.description 
-%p
-%br
-
-= link_to 'Edit Section', edit_section_path(@section) 
-%p
-= link_to 'Back to Sections Listing', sections_path 
-%p

@@ -4,8 +4,13 @@
   %h1
     Create New Section
 
-= simple_form_for(@section) do |f| 
+.right
+  = link_to 'Back to Sections Listing', admin_sections_path 
+%p
+%br
+%br
+
+= simple_form_for([:admin, @section]) do |f| 
   = f.error_notification 
   = render :partial => 'form', :locals=>{:f=>f}
 
-= link_to 'Back to Sections Listing', sections_path 

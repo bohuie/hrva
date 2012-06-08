@@ -1,7 +1,4 @@
 NewApp::Application.routes.draw do
-  resources :sections
-
-  resources :scetions
 
   devise_for :users
 
@@ -20,6 +17,7 @@ NewApp::Application.routes.draw do
   
   namespace :admin do
     resources :users
+    resources :sections
   end
   resources :admin
 

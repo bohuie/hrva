@@ -49,7 +49,7 @@
         %td
           %span{:style => 'white-space: nowrap'}
             -uact = u.active? ? 'inactivate' : 'activate'
-            =action_links [:admin, u], :exclude => [:index, :show], :delete => {:icon_class => !u.active? ? ' icon-ok icon-white' : nil, :class=>(u.active? ? 'btn btn-danger' : 'btn btn-primary'), :title => uact.humanize, :alt_text => uact.humanize, :confirm => "Are you sure you want to #{uact} this user?"}
+            =action_links [:admin, u], :exclude => [:index, :show], :delete => {:icon_class => !u.active? ? 'icon-ok icon-white' : nil, :class=>(u.active? ? 'btn btn-danger' : 'btn btn-primary'), :title => uact.humanize, :alt_text => uact.humanize, :confirm => "Are you sure you want to #{uact} this user?"}
     -if @users.total_pages > 1
       %tr
         %td{:colspan => 7}
