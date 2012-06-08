@@ -1,0 +1,35 @@
+= provide(:title, 'Show Question') 
+
+.page-header
+  %h1
+    Question Details
+
+=#<p id="notice"><%= notice %></p>
+
+.right
+  = link_to 'Edit Question', edit_question_path(@question) 
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Questions Listing', questions_path 
+%p
+%br
+%br
+
+%p
+  %b
+    Item:
+%p
+= @question.item
+
+%p
+  %b
+    Type:
+%p
+= @question.qtype
+</p>
+
+%p
+  %b
+    Instruction:
+%p
+= @question.instruction
