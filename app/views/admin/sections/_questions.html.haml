@@ -15,7 +15,7 @@
       %td
         = question.item 
       %td
-        = question.qtype 
+        = question.qtype.to_s.humanize
       %td
         = question.instruction 
       %td
