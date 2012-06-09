@@ -22,13 +22,14 @@
 = @question.item
 
 %p
+%br
   %b
     Type:
 %p
-= @question.qtype
-</p>
+= @question.qtype.to_s.humanize
 
 %p
+%br
   %b
     Instruction:
 %p
