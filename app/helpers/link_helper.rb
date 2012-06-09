@@ -71,10 +71,10 @@ module LinkHelper
     opts = {:title => 'Delete', :method => :delete,
            :confirm  => "Are you sure? Clicking 'OK' will remove this record permanently!",
            :alt_text => "Delete",
-           :class => 'btn btn-danger pull-right'}.merge(new_opts)        
+           :class => 'btn btn-danger'}.merge(new_opts)        
     link_to polymorphic_path(context, path_opts), opts do
       haml_concat opts[:title]
-      haml_tag :i, :class => opts[:icon_class] ||'icon-remove icon-white'
+      #haml_tag :i, :class => opts[:icon_class] ||'icon-remove icon-white'
     end
   end  
   
@@ -88,7 +88,7 @@ module LinkHelper
     opts = {:title => 'Edit', :class => 'btn btn-info'}.merge(new_opts)
     link_to edit_polymorphic_path(context, path_opts), opts do
       haml_concat opts[:title]
-      haml_tag :i, :class => 'icon-edit icon-white'
+      #haml_tag :i, :class => 'icon-edit icon-white'
     end      
   end  
 
@@ -100,7 +100,7 @@ module LinkHelper
     index_path = index_offset == -1 ? context_index(context) : context[0..index_offset] unless options[:exclude].include?(:index)
     a = []
     a << [link_to(options[:index][:title], opts[:index_path] || polymorphic_path(index_path))] unless options[:exclude].include?(:index)
-    a << [ view_link_text(options[:show][:path] || context, options.merge(options[:show] || {}))] unless options[:exclude].include?(:show)
+    a << [ view_link_text(context, options.merge(options[:show] || {}))] unless options[:exclude].include?(:show)
     a << [ edit_link_text(context, options.merge(options[:edit] || {}))] unless options[:exclude].include?(:edit)
     a << [ delete_link_text(context, options.merge(options[:delete] || {}))] unless options[:exclude].include?(:delete) 
     capture_haml do

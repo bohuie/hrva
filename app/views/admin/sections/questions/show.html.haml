@@ -7,10 +7,10 @@
 =#<p id="notice"><%= notice %></p>
 
 .right
-  = link_to 'Edit Question', edit_question_path(@question) 
+  = link_to 'Edit Question', edit_admin_section_question_path( @section, @question) 
   &nbsp;
   &nbsp;
-  = link_to 'Back to Questions Listing', questions_path 
+  = link_to 'Back to Section Details', admin_section_path( @section )
 %p
 %br
 %br

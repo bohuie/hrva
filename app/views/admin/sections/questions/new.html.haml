@@ -5,11 +5,11 @@
     Create New Question
 
 .right
-  = link_to 'Back to Questions Listing', questions_path 
+  = link_to 'Back to Sections Listing', admin_section_path( @section )
 %p
 %br
 %br
 
-= simple_form_for( @question , :html=>{:class=>'form-horizontal'} ) do |f| 
+= simple_form_for( [:admin, @section, @question] , :html=>{:class=>'form-horizontal'} ) do |f| 
   = f.error_notification 
   = render :partial => 'form', :locals=>{:f=>f}

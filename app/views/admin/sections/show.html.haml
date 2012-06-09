@@ -27,3 +27,14 @@
     Description:
 %p
 = @section.description 
+
+%p
+%br
+  %b
+    Questions:
+
+%p
+= render 'questions'
+
+%br
+= link_to 'Create New Question', new_admin_section_question_path(@section)

@@ -5,7 +5,8 @@ class Admin::SectionsController < AdminController
   end
 
   def show
-    @section = Section.find(params[:id])
+    @section   = Section.find(params[:id])
+    @questions = @section.questions.all
   end
 
   def new

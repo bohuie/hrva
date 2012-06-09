@@ -1,7 +1,5 @@
 NewApp::Application.routes.draw do
 
-  resources :questions
-
   devise_for :users
 
   root :to => 'static_pages#home'
@@ -19,7 +17,11 @@ NewApp::Application.routes.draw do
   
   namespace :admin do
     resources :users
-    resources :sections
+    resources :sections do
+      scope :module => 'sections' do
+        resources :questions
+      end
+    end
   end
   resources :admin
 
