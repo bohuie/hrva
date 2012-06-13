@@ -34,7 +34,11 @@
     Questions:
 
 %p
-= render 'questions'
+- if @section.questions.blank?
+  None
+  %p
+- else
+  = render 'questions'
 
 %br
 = link_to 'Create New Question', new_admin_section_question_path(@section)

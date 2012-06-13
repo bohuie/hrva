@@ -33,4 +33,7 @@
   %b
     Instruction:
 %p
-= @question.instruction
+- if @question.instruction.blank?
+  None
+- else
+  = @question.instruction

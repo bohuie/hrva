@@ -6,7 +6,6 @@ class Admin::UsersController < AdminController
   
   def show
     @user = User.find(params[:id])
-    render 'users/show'
   end
   
   def new

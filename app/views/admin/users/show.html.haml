@@ -1,0 +1,91 @@
+.page-header
+  %h1
+    View User Profile
+
+.right
+  = link_to 'Edit User', edit_admin_user_path(@user) 
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to User Accounts', admin_users_path 
+%p
+%br
+%br
+
+%table{:cellpadding=>'10px'}
+  %tr
+    %td
+      %b
+        Username:
+    %td
+      = @user.username 
+  %tr
+    %td
+      %b
+        Name:
+    %td
+      = @user.first_name
+      = @user.last_name
+
+  %tr
+    %td
+      %b
+        Affiliation:
+    %td
+      = @user.organization
+    
+  %tr
+    %td
+      %b
+        Position Title:
+    %td
+      = @user.current_role
+    
+  %tr
+    %td
+      %b
+        Area or Region Represented:
+    %td
+      = @user.city
+    
+  %tr
+    %td
+      %b
+        State/Province:
+    %td
+      = @user.province
+    
+  %tr
+    %td
+      %b
+        Country:
+    %td
+      = @user.country
+    
+  %tr
+    %td
+      %b
+        Email:
+    %td
+      = @user.email
+    
+  %tr
+    %td
+      %b
+        Contact Phone:
+    %td
+      = @user.phone
+    
+  %tr
+    %td
+      %b
+        Admin?
+    %td
+      = @user.admin
+    
+  %tr
+    %td
+      %b
+        Active?
+    %td
+      = @user.active
+    
