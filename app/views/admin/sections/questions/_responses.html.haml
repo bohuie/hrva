@@ -1,0 +1,18 @@
+
+%table{:cellpadding=>10, :border=>1, :width=>'100%'}
+  %tr
+    %th
+      Label
+    %th
+      Actions 
+
+  - @responses.each do |response| 
+    %tr
+      %td
+        = response.label
+      %td{:width=>'25%'}
+        %span{:style => 'white-space: nowrap'}
+          .center 
+            = action_links [:admin, @section, @question, response], :exclude => [:index], :delete => {:title=>'Delete', :alt_text=>'Delete', :confirm=> 'Are you sure you want to delete this response?'}
+
+

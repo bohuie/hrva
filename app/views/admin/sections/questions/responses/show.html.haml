@@ -1,0 +1,22 @@
+= provide(:title, 'Show Response') 
+
+.page-header
+  %h1
+    Response Details
+
+=#<p id="notice"><%= notice %></p>
+
+.right
+  = link_to 'Edit Response', edit_admin_section_question_response_path( @section, @question, @response) 
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Question Details', admin_section_question_path( @section, @question )
+%p
+%br
+%br
+
+%p
+  %b
+    Response Label:
+%p
+= @response.label

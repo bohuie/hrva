@@ -2,6 +2,8 @@ class Question < ActiveRecord::Base
   attr_accessible :instruction, :item, :qtype
 
   belongs_to :section
+  has_many   :responses
+  has_many   :answers
 
   validates_presence_of :item, :qtype
 

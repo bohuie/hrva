@@ -6,8 +6,9 @@ class Admin::Sections::QuestionsController < ApplicationController
   end
 
   def show
-    @section  = Section.find params[:section_id]
-    @question = @section.questions.find params[:id] 
+    @section   = Section.find params[:section_id]
+    @question  = @section.questions.find params[:id] 
+    @responses = @question.responses.all 
   end
 
   def new

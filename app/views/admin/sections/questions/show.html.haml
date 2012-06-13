@@ -37,3 +37,18 @@
   None
 - else
   = @question.instruction
+
+%p
+%br
+  %b
+    Reponses:
+
+%p
+- if @question.responses.blank?
+  None
+  %p
+- else
+  = render 'responses'
+
+%br
+= link_to 'Create New Response', new_admin_section_question_response_path(@section,@question)

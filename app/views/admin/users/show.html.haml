@@ -11,81 +11,82 @@
 %br
 %br
 
-%table{:cellpadding=>'10px'}
-  %tr
-    %td
-      %b
-        Username:
-    %td
-      = @user.username 
-  %tr
-    %td
-      %b
-        Name:
-    %td
-      = @user.first_name
-      = @user.last_name
-
-  %tr
-    %td
-      %b
-        Affiliation:
-    %td
-      = @user.organization
-    
-  %tr
-    %td
-      %b
-        Position Title:
-    %td
-      = @user.current_role
-    
-  %tr
-    %td
-      %b
-        Area or Region Represented:
-    %td
-      = @user.city
-    
-  %tr
-    %td
-      %b
-        State/Province:
-    %td
-      = @user.province
-    
-  %tr
-    %td
-      %b
-        Country:
-    %td
-      = @user.country
-    
-  %tr
-    %td
-      %b
-        Email:
-    %td
-      = @user.email
-    
-  %tr
-    %td
-      %b
-        Contact Phone:
-    %td
-      = @user.phone
-    
-  %tr
-    %td
-      %b
-        Admin?
-    %td
-      = @user.admin
-    
-  %tr
-    %td
-      %b
-        Active?
-    %td
-      = @user.active
-    
+.big 
+  %table{:cellpadding=>'10px'}
+    %tr
+      %td{:align=>'right'}
+        %b
+          Username:
+      %td
+        = @user.username 
+    %tr
+      %td{:align=>'right'}
+        %b
+          Name:
+      %td
+        = @user.first_name
+        = @user.last_name
+  
+    %tr
+      %td{:align=>'right'}
+        %b
+          Affiliation:
+      %td
+        = @user.organization
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Position Title:
+      %td
+        = @user.current_role
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Area or Region Represented:
+      %td
+        = @user.city
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          State/Province:
+      %td
+        = @user.province
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Country:
+      %td
+        = @user.country
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Email:
+      %td
+        = @user.email
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Contact Phone:
+      %td
+        = @user.phone
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Admin?
+      %td
+        = @user.admin
+      
+    %tr
+      %td{:align=>'right'}
+        %b
+          Active?
+      %td
+        = @user.active
+      

@@ -1,0 +1,17 @@
+= provide(:title, 'Edit Question') 
+
+.page-header
+  %h1
+    Edit Response
+
+.right
+  = link_to 'Show Response', admin_section_question_response_path(@section,@question,@response)
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Question Details', admin_section_question_path( @section,@question )
+%p
+
+= simple_form_for( [:admin, @section, @question, @response] , :html=>{:class=>'form-horizontal'} ) do |f| 
+  = f.error_notification 
+  = render :partial => 'form', :locals=>{:f=>f}
+

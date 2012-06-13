@@ -10,47 +10,49 @@
 - if @users
   = page_entries_info @users, :model => 'User' 
 %br
-%table.table.table-striped.table-bordered
-  %thead
-    %tr
-      %th
-        ID
-      %th
-        Active?
-      %th
-        Username
-      %th
-        Display Name
-      %th
-        Email
-      %th
-        Admin?
-      %th
-        Date Created
-      %th
-        Actions
-  %tbody
-    -@users.each do |u|
+
+.big
+  %table.table.table-striped.table-bordered
+    %thead
       %tr
-        %td
-          =u.id      
-        %td
-          =u.active?
-        %td
-          =u.username
-        %td
-          =u.display_name
-        %td
-          =u.email
-        %td
-          =u.admin? 
-        %td
-          =u.created_at.to_formatted_s(:short_with_year)
-        %td
-          %span{:style => 'white-space: nowrap'}
-            -uact = u.active? ? 'inactivate' : 'activate'
-            =action_links [:admin, u], :exclude => [:index], :delete => {:icon_class => !u.active? ? 'icon-ok icon-white' : nil, :class=>(u.active? ? 'btn btn-danger' : 'btn btn-primary'), :title => uact.humanize, :alt_text => uact.humanize, :confirm => "Are you sure you want to #{uact} this user?"}
-    -if @users.total_pages > 1
-      %tr
-        %td{:colspan => 7}
-          = will_paginate @users, :renderer => 'WillPaginateHelper::LinkRenderer'          
+        %th
+          ID
+        %th
+          Active?
+        %th
+          Username
+        %th
+          Display Name
+        %th
+          Email
+        %th
+          Admin?
+        %th
+          Date Created
+        %th
+          Actions
+    %tbody
+      -@users.each do |u|
+        %tr
+          %td
+            =u.id      
+          %td
+            =u.active?
+          %td
+            =u.username
+          %td
+            =u.display_name
+          %td
+            =u.email
+          %td
+            =u.admin? 
+          %td
+            =u.created_at.to_formatted_s(:short_with_year)
+          %td
+            %span{:style => 'white-space: nowrap'}
+              -uact = u.active? ? 'inactivate' : 'activate'
+              =action_links [:admin, u], :exclude => [:index], :delete => {:icon_class => !u.active? ? 'icon-ok icon-white' : nil, :class=>(u.active? ? 'btn btn-danger' : 'btn btn-primary'), :title => uact.humanize, :alt_text => uact.humanize, :confirm => "Are you sure you want to #{uact} this user?"}
+      -if @users.total_pages > 1
+        %tr
+          %td{:colspan => 7}
+            = will_paginate @users, :renderer => 'WillPaginateHelper::LinkRenderer'          

@@ -1,5 +1,7 @@
 NewApp::Application.routes.draw do
 
+  resources :responses
+
   devise_for :users
 
   root :to => 'static_pages#home'
@@ -19,7 +21,11 @@ NewApp::Application.routes.draw do
     resources :users
     resources :sections do
       scope :module => 'sections' do
-        resources :questions
+        resources :questions do
+          scope :module => 'questions' do
+            resources :responses
+          end
+        end
       end
     end
   end
