@@ -31,7 +31,7 @@ class Admin::Sections::Questions::ResponsesController < ApplicationController
 
     if @response.save
       flash[:notice] = 'Response was successfully created.' 
-      redirect_to [:admin, @section, @question, @response]
+      redirect_to admin_section_question_path( @section, @question )
     else
       render 'new'
     end
@@ -40,11 +40,11 @@ class Admin::Sections::Questions::ResponsesController < ApplicationController
   def update
     @section   = Section.find params[:section_id]
     @question  = @section.questions.find params[:question_id]
-    @response = @question.responses.find params[:id] 
+    @response  = @question.responses.find params[:id] 
 
     if @response.update_attributes(params[:response])
       flash[:notice] = 'Response was successfully updated.'
-      redirect_to [:admin, @section, @question, @response]
+      redirect_to admin_section_question_path( @section, @question )
     else
       flash[:notice] = @question.response.errors.full_messages.to_sentence
       render 'edit'
@@ -54,10 +54,10 @@ class Admin::Sections::Questions::ResponsesController < ApplicationController
   def destroy
     @section   = Section.find params[:section_id]
     @question  = @section.questions.find params[:question_id]
-    @response = @question.responses.find params[:id] 
+    @response  = @question.responses.find params[:id] 
     @response.destroy
 
     flash[:notice] = 'Response was successfully deleted.'
-    redirect_to admin_section_question_responses_path( @section,@question )
+    redirect_to admin_section_question_path( @section, @question )
   end
 end

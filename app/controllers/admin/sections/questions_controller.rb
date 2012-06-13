@@ -27,9 +27,9 @@ class Admin::Sections::QuestionsController < ApplicationController
 
     if @question.save
       flash[:notice] = 'Question was successfully created.'
-      redirect_to [:admin, @section, @question] 
+      redirect_to admin_section_path( @section )
     else
-        render 'new'
+      render 'new'
     end
   end
 
@@ -39,7 +39,7 @@ class Admin::Sections::QuestionsController < ApplicationController
 
     if @question.update_attributes(params[:question])
       flash[:notice] = 'Question was successfully updated.'
-      redirect_to [:admin, @section, @question]
+      redirect_to admin_section_path( @section )
     else
       flash[:notice] = @section.question.errors.full_messages.to_sentence 
       render 'edit'
@@ -52,6 +52,6 @@ class Admin::Sections::QuestionsController < ApplicationController
     @question.destroy
 
     flash[:notice] = 'Question was successfully deleted.'
-    redirect_to admin_section_questions_path( @section )
+    redirect_to admin_section_path( @section )
   end
 end
