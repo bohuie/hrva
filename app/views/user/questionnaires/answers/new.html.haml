@@ -9,8 +9,6 @@
 
 .well
   %h3
-    Question:
-    %br
     = @question.item 
 
   %p
@@ -24,7 +22,7 @@
     = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked'}) do |f| 
       %table{:width=>'100%'}
         %tr
-          %td{:width=>'8%'}
+          %td{:width=>'5%'}
           %td
             - if @question.qtype == 'one_response'
               = render :partial => 'radio_form', :locals=>{:f=>f}
