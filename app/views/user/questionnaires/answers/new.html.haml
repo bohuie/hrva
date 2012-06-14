@@ -20,13 +20,17 @@
     =#   ="#{r.value}, #{r.label}"
 
     = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked'}) do |f| 
-      %table{:width=>'100%'}
-        %tr
-          %td{:width=>'5%'}
-          %td
-            - if @question.qtype == 'one_response'
+      - if @question.qtype == 'one_response'
+        %table{:width=>'100%'}
+          %tr
+            %td{:width=>'3%'}
+            %td
               = render :partial => 'radio_form', :locals=>{:f=>f}
-            - else
+      - else
+        %table{:width=>'100%'}
+          %tr
+            %td{:width=>'8%'}
+            %td
               = render :partial => 'text_form',  :locals=>{:f=>f}
       
 = render 'footer'

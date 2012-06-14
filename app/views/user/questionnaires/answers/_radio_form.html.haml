@@ -1,6 +1,6 @@
 =# f.input :response_id, :as=>'radio'
 
-%table{:cellpadding=>'5'}
+%table
   %tr
     - ii = 1;
     - @question.responses.each do |r|
@@ -32,7 +32,7 @@
     - ii = 0;
     - @question.responses.each do |r|
       %td{:width=>'15'}
-      %td{:align=>'center', :valign=>'top'}
+      %td{:align=>'center', :valign=>'top', :width=>'60'}
         = "#{r.label}"
         - ii = ii + 1;
       %td{:width=>'15'}
