@@ -7,8 +7,10 @@ class Questionnaire < ActiveRecord::Base
   def next
     @a = self.answers.last
     if @a
+      # continuing the survey 
       return Question.where( "id > ?", @a.question_id ).order("id asc").first, @a
     else
+      # starting the survey for the first time
       return Question.first, nil
     end
   end

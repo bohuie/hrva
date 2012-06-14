@@ -4,6 +4,10 @@ class User::Questionnaires::AnswersController < ApplicationController
     @questionnaire       = Questionnaire.find params[:questionnaire_id]
     @question, @previous = @questionnaire.next
     @answer              = @questionnaire.answers.build :question=>@question
+
+    if !@question
+      redirect_to thankyou_path
+    end
   end
 
   def create
