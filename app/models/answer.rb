@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :response_text, :question, :question_id
+  attr_accessible :response_text, :question, :question_id, :response_id
 
   belongs_to :question
   belongs_to :response
@@ -10,8 +10,10 @@ class Answer < ActiveRecord::Base
 
 private
   def answer_present
-    errors.add(:base, 'test' )
-    return false
+    if self.question.qtype == 'one_response' && self.response_id.nil?
+      errors.add(:base, 'Please fill in an answer before clicking Next.' )
+      return false
+    end
   end
 
 end
