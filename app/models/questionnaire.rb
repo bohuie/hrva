@@ -5,7 +5,7 @@ class Questionnaire < ActiveRecord::Base
   has_many   :answers
 
   def next
-    @area_questions = Question.find(:all).select{|q| q.section_id == 1}
+    @area_questions = Question.all.select{|q| q.section_id == 1}
     @area_questions.third
   end
 end
