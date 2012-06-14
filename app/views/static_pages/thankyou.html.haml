@@ -2,7 +2,8 @@
 
 .page-header
   %h2
-    Assessment for Region: Springfield
+    Assessment Region: 
+    = current_user.city
 
 .hero-unit
   %center
@@ -20,7 +21,7 @@
 .big
   Please note this assessment is only the first step in preparing your
   area for hazards. Please check 
-  =link_to 'here', '#'
+  =link_to 'here', references_path
   for information on how to proceed.
   
 %p

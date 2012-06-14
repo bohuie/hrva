@@ -12,9 +12,11 @@ NewApp::Application.routes.draw do
   match '/options',      :to => 'static_pages#options'
   match '/experts',      :to => 'static_pages#experts'
   match '/start',        :to => 'static_pages#start'
+  match '/resume',       :to => 'static_pages#resume'
   match '/references',   :to => 'static_pages#references'
   match '/test',         :to => 'static_pages#test' 
   match '/thankyou',     :to => 'static_pages#thankyou' 
+  match '/returnsoon',   :to => 'static_pages#returnsoon' 
   
   
   namespace :admin do
