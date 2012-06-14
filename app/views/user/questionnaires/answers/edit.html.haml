@@ -13,12 +13,6 @@
 
   %p
   .big
-    =# Type:
-    =# = @question.qtype 
-    =# - @question.responses.each do |r|
-    =#   %p
-    =#   ="#{r.value}, #{r.label}"
-
     = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked', :id=>'new_answer'}) do |f| 
       = f.hidden_field :question_id
       - if @question.qtype == 'likert_scale'

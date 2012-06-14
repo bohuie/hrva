@@ -4,7 +4,8 @@
   - @question.responses.each do |r|
     %tr
       %td{:valign=>'center'}
-        = f.radio_button :response_id, "#{r.value}"
+        = f.check_box :response_id, {}, "#{r.value}", 0
         &nbsp;
         = "#{r.label}"
+
 

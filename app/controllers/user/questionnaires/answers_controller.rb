@@ -1,10 +1,9 @@
 class User::Questionnaires::AnswersController < ApplicationController
 
-  # continues assessment to next unanswered question
   def new 
-    @questionnaire = Questionnaire.find params[:questionnaire_id]
-    @question      = @questionnaire.next
-    @answer        = @questionnaire.answers.build :question=>@question
+    @questionnaire       = Questionnaire.find params[:questionnaire_id]
+    @question, @previous = @questionnaire.next
+    @answer              = @questionnaire.answers.build :question=>@question
   end
 
   def create
@@ -21,5 +20,26 @@ class User::Questionnaires::AnswersController < ApplicationController
   end
 
   def edit
+    @questionnaire = Questionnaire.find params[:questionnaire_id]
+    @answer        = @questionnaire.answers.find params[:id]
+    @question      = @answer.question
+    @previous      = @questionnaire.prev( @answer )
+  end
+
+  def update
+    @questionnaire = Questionnaire.find params[:questionnaire_id]
+    @answer        = @questionnaire.answers.find params[:id]
+    @question      = @answer.question
+
+    if @answer.update_attributes( params[:answer] )
+      if @answer.next
+        redirect_to edit_user_questionnaire_answer_path(@questionnaire, @answer.next)
+      else
+        redirect_to new_user_questionnaire_answer_path
+      end
+    else
+      flash[:error] = @answer.errors.full_messages.to_sentence
+      render 'edit'
+    end
   end
 end

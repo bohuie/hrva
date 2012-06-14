@@ -8,6 +8,15 @@ class Answer < ActiveRecord::Base
   validates_presence_of :questionnaire_id, :question_id
   validate :answer_present
 
+  def prev
+    return self.questionnaire.answers.last unless self.id
+    return self.questionnaire.answers.where( "id < ?", self.id ).order("id asc").last
+  end
+
+  def next
+    return self.questionnaire.answers.where( "id > ?", self.id ).order("id asc").first
+  end
+
 private
   def answer_present
     if self.question.qtype == 'one_response' && self.response_id.nil?

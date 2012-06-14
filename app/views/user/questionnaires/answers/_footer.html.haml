@@ -2,7 +2,8 @@
 %p
 %br
 .left
-  =link_to 'Previous', edit_user_questionnaire_answer_path(@question, 1), :method=>:get, :class=>'btn btn-primary'
+  - if @answer.prev
+    =link_to 'Previous', edit_user_questionnaire_answer_path(@questionnaire, @answer.prev), :method=>:get, :class=>'btn btn-primary'
 .right
   =link_to_function 'Next', "$('#new_answer').submit()", :class=>'btn btn-primary'
 

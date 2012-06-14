@@ -5,9 +5,15 @@ class Questionnaire < ActiveRecord::Base
   has_many   :answers
 
   def next
-    #@area_questions = Question.all.select{|q| q.section_id == 13}
-    #@area_questions.third
-    @q = Question.all.select{|q| q.item == 'What is the approximate average age of the population in your area?'}
-    @q.first
+    @a = self.answers.last
+    if @a
+      return Question.where( "id > ?", @a.question_id ).order("id asc").first, @a
+    else
+      return Question.first, nil
+    end
+  end
+
+  def prev( ans )
+    answers.where( "id < ?", ans.id ).order("id asc").last
   end
 end
