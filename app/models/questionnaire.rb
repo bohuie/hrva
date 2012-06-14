@@ -18,4 +18,8 @@ class Questionnaire < ActiveRecord::Base
   def prev( ans )
     answers.where( "id < ?", ans.id ).order("id asc").last
   end
+
+  def complete?
+    self.answers.count == Question.count
+  end
 end

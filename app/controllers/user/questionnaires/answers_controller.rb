@@ -1,11 +1,13 @@
 class User::Questionnaires::AnswersController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def new 
     @questionnaire       = Questionnaire.find params[:questionnaire_id]
     @question, @previous = @questionnaire.next
     @answer              = @questionnaire.answers.build :question=>@question
 
-    if !@question
+    if @questionnaire.complete?
       redirect_to thankyou_path
     end
   end

@@ -7,6 +7,7 @@ class Answer < ActiveRecord::Base
 
   validates_presence_of :questionnaire_id, :question_id
   validate :answer_present
+  validates_uniqueness_of :question_id, :scope=>:questionnaire_id
 
   def prev
     return self.questionnaire.answers.last unless self.id

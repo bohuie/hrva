@@ -12,11 +12,15 @@
         %ul.nav
           %li= link_to "About",            about_path
           %li= link_to "References",       references_path
-          %li
-            - if current_user.questionnaires.last 
-              = link_to "Resume Assessment", resume_path
-            - else
-              = link_to "Start Assessment", start_path
+          - if current_user
+            %li
+              - if current_user.questionnaires.last 
+                - if current_user.questionnaires.last.complete?
+                  = link_to "View Assessment Results", view_report_path
+                - else
+                  = link_to "Resume Assessment", resume_path
+              - else
+                = link_to "Start Assessment", start_path
           %li= link_to "Help",             help_path 
           %li= link_to "Contact",          contact_path
         %ul.nav.pull-right
