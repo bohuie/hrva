@@ -20,7 +20,7 @@ class Answer < ActiveRecord::Base
 private
   def answer_present
     if self.question.qtype == 'one_response' && self.response_id.nil?
-      errors.add(:base, 'Please fill in an answer before clicking Next.' )
+      errors.add(:base, 'Please fill in an answer before leaving this page.' )
       return false
     end
   end

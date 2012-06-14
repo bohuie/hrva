@@ -12,4 +12,8 @@
 %br
 %br
 .right
-  =button_to 'Save and Exit', '#', :class=>'btn btn-inverse'
+  =link_to_function 'Save and Exit', "$('#save_and_exit').val('true'); $('#new_answer').submit()", :class=>'btn btn-inverse'
+
+%p
+%br
+%br

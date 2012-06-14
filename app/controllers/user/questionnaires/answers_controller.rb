@@ -12,7 +12,11 @@ class User::Questionnaires::AnswersController < ApplicationController
     @question      = @answer.question
 
     if @answer.save
-      redirect_to new_user_questionnaire_answer_path
+      if params[:save_and_exit] == 'true'
+        redirect_to thankyou_path
+      else
+        redirect_to new_user_questionnaire_answer_path
+      end
     else
       flash[:error] = @answer.errors.full_messages.to_sentence
       render 'new'
@@ -32,7 +36,9 @@ class User::Questionnaires::AnswersController < ApplicationController
     @question      = @answer.question
 
     if @answer.update_attributes( params[:answer] )
-      if @answer.next
+      if params[:save_and_exit] == 'true'
+        redirect_to thankyou_path
+      elsif @answer.next
         redirect_to edit_user_questionnaire_answer_path(@questionnaire, @answer.next)
       else
         redirect_to new_user_questionnaire_answer_path
