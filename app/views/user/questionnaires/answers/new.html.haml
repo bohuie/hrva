@@ -20,6 +20,7 @@
     =#   ="#{r.value}, #{r.label}"
 
     = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked'}) do |f| 
+      = f.hidden_field :question_id
       - if @question.qtype == 'one_response'
         %table{:width=>'100%'}
           %tr
