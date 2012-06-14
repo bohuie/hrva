@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120613182107) do
+ActiveRecord::Schema.define(:version => 20120614034154) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "response_id"
+    t.text     "response_text"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "questionnaire_id"
+  end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["questionnaire_id"], :name => "index_answers_on_questionnaire_id"
+  add_index "answers", ["response_id"], :name => "index_answers_on_response_id"
+
+  create_table "questionnaires", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "questions", :force => true do |t|
     t.text     "item"
@@ -29,9 +48,11 @@ ActiveRecord::Schema.define(:version => 20120613182107) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "question_id"
+    t.integer  "value"
   end
 
   add_index "responses", ["question_id"], :name => "index_responses_on_question_id"
+  add_index "responses", ["value"], :name => "index_responses_on_value"
 
   create_table "sections", :force => true do |t|
     t.string   "title"

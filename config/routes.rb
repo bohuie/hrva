@@ -31,6 +31,15 @@ NewApp::Application.routes.draw do
   end
   resources :admin
 
+  namespace :user do
+    resources :questionnaires do
+      scope :module => 'questionnaires' do
+        resources :answers
+      end
+    end
+  end
+  resources :user
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

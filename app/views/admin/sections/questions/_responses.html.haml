@@ -2,12 +2,16 @@
 %table.table.table-striped.table-bordered{:cellpadding=>10, :width=>'100%'}
   %tr
     %th
+      Value
+    %th
       Label
     %th
       Actions 
 
   - @responses.each do |response| 
     %tr
+      %td
+        = response.value
       %td
         = response.label
       %td{:width=>'20%'}

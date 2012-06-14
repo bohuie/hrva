@@ -1,0 +1,34 @@
+= render 'header'
+
+- if !@question.instruction.blank?
+  %h3
+    Instructions:
+  %h4
+    = @question.instruction
+  %br
+
+.well
+  %h3
+    Question:
+    %br
+    = @question.item 
+
+  %p
+  .big
+    =# Type:
+    =# = @question.qtype 
+    =# - @question.responses.each do |r|
+    =#   %p
+    =#   ="#{r.value}, #{r.label}"
+
+    = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked'}) do |f| 
+      %table{:width=>'100%'}
+        %tr
+          %td{:width=>'8%'}
+          %td
+            - if @question.qtype == 'one_response'
+              = render :partial => 'radio_form', :locals=>{:f=>f}
+            - else
+              = render :partial => 'text_form',  :locals=>{:f=>f}
+      
+= render 'footer'

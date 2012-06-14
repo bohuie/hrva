@@ -1,6 +1,7 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :question_id, :response_id, :response_text
+  attr_accessible :response_text, :question
 
-  belongs_to :question, :response
-
+  belongs_to :question
+  belongs_to :response
+  belongs_to :questionnaire
 end

@@ -1,0 +1,7 @@
+=# f.input :response_id, :as=>'radio'
+- @question.responses.each do |r|
+  %p
+  = f.radio_button :response_id, "#{r.value}"
+  &nbsp;
+  = "#{r.label}"
+

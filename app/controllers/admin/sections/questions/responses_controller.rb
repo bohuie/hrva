@@ -46,7 +46,7 @@ class Admin::Sections::Questions::ResponsesController < ApplicationController
       flash[:notice] = 'Response was successfully updated.'
       redirect_to admin_section_question_path( @section, @question )
     else
-      flash[:notice] = @question.response.errors.full_messages.to_sentence
+      flash[:notice] = @response.errors.full_messages.to_sentence
       render 'edit'
     end
   end
