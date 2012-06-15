@@ -11,6 +11,8 @@
     %th
       Description
     %th
+      Number of Questions
+    %th
       Actions 
 
   - @sections.each do |section| 
@@ -19,6 +21,8 @@
         = section.title 
       %td
         = section.description 
+      %td
+        = section.questions.count
       %td{:width=>'20%'}
         %span{:style => 'white-space: nowrap'}
           .center

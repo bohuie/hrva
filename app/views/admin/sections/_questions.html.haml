@@ -8,6 +8,8 @@
     %th
       Instruction
     %th
+      Number of Response Labels
+    %th
       Actions 
 
   - @questions.each do |question| 
@@ -18,6 +20,8 @@
         = question.qtype.to_s.humanize
       %td
         = question.instruction 
+      %td
+        = question.responses.count
       %td{:width=>'20%'}
         %span{:style => 'white-space: nowrap'}
           .center

@@ -28,7 +28,7 @@
         %th
           Admin?
         %th
-          Date Created
+          Region Represented
         %th
           Actions
     %tbody
@@ -47,7 +47,8 @@
           %td
             =u.admin? 
           %td
-            =u.created_at.to_formatted_s(:short_with_year)
+            =#u.created_at.to_formatted_s(:short_with_year)
+            =u.city 
           %td
             %span{:style => 'white-space: nowrap'}
               -uact = u.active? ? 'inactivate' : 'activate'

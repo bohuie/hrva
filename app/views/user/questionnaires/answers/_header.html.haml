@@ -8,15 +8,21 @@
 .big
   %ul.nav.nav-tabs
     %li.active
-      =link_to 'Area Profile', '#'
+      - str = 'Area Profile'
+      - sec = Section.all.select{|s| s.title == str }
+      =link_to str, '#'
     %li
-      =link_to 'Hazards', '#'
+      - str = 'Natural Hazards'
+      =link_to str, '#'
     %li 
-      =link_to 'Preparedness', '#'
+      - str = 'Preparedness'
+      =link_to str, '#'
     %li 
-      =link_to 'Accidental and Human Caused Hazards', '#'
+      - str = 'Accidental and Human Caused Hazards'
+      =link_to str, '#'
     %li 
-      =link_to 'Compounded Risks and Hazards', '#'
+      - str = 'Compounded Risks and Hazards'
+      =link_to str, '#'
 
 %p
 
