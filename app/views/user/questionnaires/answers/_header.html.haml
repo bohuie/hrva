@@ -20,7 +20,7 @@
             =link_to str, edit_user_questionnaire_answer_path(@questionnaire, ans)
         - else 
           %li.active
-            =link_to str, '#', {:style=>'color:#D8D8D8;', :class => "css_class"}
+            =link_to str, '#'
 
       - else 
         - if ans 
@@ -32,13 +32,14 @@
 
 %p
 
+- rems = currsec.questions.where( "questions.id > ?", @question.id ).order("id asc").count
+- tots = currsec.questions.count
+- nums = tots - rems
+- perc = nums.to_f / tots * 100
 .right
   %table
     %tr
       %td{:valign=>'top'}
-        - rems = currsec.questions.where( "questions.id > ?", @question.id ).order("id asc").count
-        - tots = currsec.questions.count
-        - nums = tots - rems
         Question 
         = "#{nums}"
         out of 
@@ -48,7 +49,7 @@
       %td{:valign=>'top'}
         .span2
           .progress.progress-info.progress-striped
-            .bar{ :style=>"width: 75%" }
+            .bar{ :style=>"width: #{perc}%" }
 
 %br
 %p
