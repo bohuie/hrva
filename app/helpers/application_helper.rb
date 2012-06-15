@@ -17,4 +17,7 @@ module ApplicationHelper
     text.gsub(/(http(|s):\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}
   end
 
+  def display_your_area(text)
+    text.gsub( /(.*) your area(.*)/, "\\1 #{current_user.city}\\2" )
+  end
 end
