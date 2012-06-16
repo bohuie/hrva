@@ -8,7 +8,7 @@ class Admin::Sections::QuestionsController < ApplicationController
   def show
     @section   = Section.find params[:section_id]
     @question  = @section.questions.find params[:id] 
-    @responses = @question.responses.all 
+    @responses = @question.responses.all( :order=>'value' )
   end
 
   def new
