@@ -1,10 +1,8 @@
-=# f.input :response_id, :as=>'radio'
-
 %table{:cellpadding=>'10'}
   - @question.responses.each do |r|
     %tr
       %td{:valign=>'center'}
-        = f.radio_button :response_id, "#{r.value}"
+        = f.radio_button :response_id, r.id #:response_value, "#{r.value}"
         &nbsp;
         = "#{r.label}"
 

@@ -30,8 +30,13 @@ class Answer < ActiveRecord::Base
   end
 
 private
+  # ensure one_response and likert_scale have an answer 
+  # answers for other qtypes (e.g., many_responses, text) are optional
   def answer_present
     if self.question.qtype == 'one_response' && self.response_id.nil?
+      errors.add(:base, 'Please fill in an answer before leaving this page.' )
+      return false
+    elsif self.question.qtype == 'likert_scale' && self.response_id.nil?
       errors.add(:base, 'Please fill in an answer before leaving this page.' )
       return false
     end

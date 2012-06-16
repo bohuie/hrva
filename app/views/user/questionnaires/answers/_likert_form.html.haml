@@ -1,5 +1,3 @@
-=# f.input :response_id, :as=>'radio'
-
 %table
   %tr
     - ii = 1;
@@ -19,7 +17,7 @@
     - ii = 0;
     - @question.responses.each do |r|
       %td{:colspan=>'3',:align=>'center'}
-        = f.radio_button :response_id, "#{r.value}"
+        = f.radio_button :response_id, r.id #:response_value, "#{r.value}"
         - ii = ii + 1;
 
       %td

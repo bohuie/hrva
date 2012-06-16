@@ -1,10 +1,8 @@
-=# f.input :response_id, :as=>'radio'
-
 %table{:cellpadding=>'10'}
   = f.fields_for :multianswers do |m|
     %tr
       %td{:valign=>'center'}
-        = m.hidden_field :response_id #, m.object.response.id
+        = m.hidden_field :response_id, m.object.response.id
         = m.check_box :selected
         &nbsp;
         = "#{m.object.response.label}"

@@ -20,7 +20,7 @@ class Section < ActiveRecord::Base
 
       # check if num questions in psec is same as num answers in psec
       num_questions = psec.questions.count
-      num_answers   = q.answers.select{|a| a.question.section == psec}.count
+      num_answers   = q.answers.select{|a| a.id && a.question.section == psec}.count
       return num_questions == num_answers
 
     else
