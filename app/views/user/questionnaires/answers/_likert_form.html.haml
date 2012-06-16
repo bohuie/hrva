@@ -17,7 +17,7 @@
 
   %tr
     - ii = 0;
-    - @question.responses.sort_by{|r| r.value}.each do |r|
+    - @question.responses.each do |r|
       %td{:colspan=>'3',:align=>'center'}
         = f.radio_button :response_id, "#{r.value}"
         - ii = ii + 1;

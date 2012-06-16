@@ -1,7 +1,7 @@
 =# f.input :response_id, :as=>'radio'
 
 %table{:cellpadding=>'10'}
-  - @question.responses.sort_by{|r| r.value}.each do |r|
+  - @question.responses.each do |r|
     %tr
       %td{:valign=>'center'}
         = f.radio_button :response_id, "#{r.value}"

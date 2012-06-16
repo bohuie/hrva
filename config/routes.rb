@@ -1,5 +1,7 @@
 NewApp::Application.routes.draw do
 
+  resources :multianswers
+
   resources :responses
 
   devise_for :users
