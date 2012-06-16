@@ -1,9 +1,9 @@
 class Section < ActiveRecord::Base
-  attr_accessible :description, :title
+  attr_accessible :description, :title, :order_id
 
   has_many :questions
 
-  validates_presence_of :title
+  validates_presence_of :title, :order_id
 
   def self.tab( num )
     if num == 1

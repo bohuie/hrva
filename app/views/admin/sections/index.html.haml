@@ -7,6 +7,8 @@
 %table.table.table-striped.table-bordered{:cellpadding=>10, :width=>'100%'}
   %tr
     %th
+      Order Id
+    %th
       Title
     %th
       Description
@@ -17,6 +19,8 @@
 
   - @sections.each do |section| 
     %tr
+      %td
+        = section.order_id
       %td
         = section.title 
       %td

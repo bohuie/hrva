@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614154411) do
+ActiveRecord::Schema.define(:version => 20120616020438) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(:version => 20120614154411) do
     t.text     "description", :limit => 16777215
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.integer  "order_id"
   end
+
+  add_index "sections", ["order_id"], :name => "index_sections_on_order_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",   :null => false
