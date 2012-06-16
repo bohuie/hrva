@@ -6,16 +6,10 @@ class Section < ActiveRecord::Base
   validates_presence_of :title, :order_id
 
   def self.tab( num )
-    if num == 1
-      Section.all.select{|s| s.title == 'Area Profile'}.first
-    elsif num == 2
-      Section.all.select{|s| s.title == 'Natural Hazards'}.first
-    elsif num == 3
-      Section.all.select{|s| s.title == 'Preparedness'}.first
-    elsif num == 4
-      Section.all.select{|s| s.title == 'Accidental and Human Caused Hazards'}.first
+    if num >= 1 && num <= 5
+      Section.all.select{|s| s.order_id == num}.first
     else 
-      Section.all.select{|s| s.title == 'Compounded Risks and Hazards'}.first
+      nil
     end
   end
   
