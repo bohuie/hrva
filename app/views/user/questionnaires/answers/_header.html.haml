@@ -9,13 +9,19 @@
 .big
   %ul.nav.nav-tabs
     - for ii in 1..5
+      =# section order as they appear on nav-tabs is hardcoded
       - sec = Section.tab( ii )
       - str = sec.title
+
+      =# check if ans exists for first question in section
+      =# if so, allow user to go back to edit it
+      =# if not, disable link + fade out tab 
       - ans = @questionnaire.answers.select{|a| !a.new_record? && a.question.section == sec}.first
 
+      =# also, make nav-tabs active when in the current tab 
       - if @question.section == sec
         - currsec = sec
-        - if ans 
+        - if ans
           %li.active
             =link_to str, edit_user_questionnaire_answer_path(@questionnaire, ans)
         - else 
@@ -26,12 +32,16 @@
         - if ans 
           %li
             =link_to str, edit_user_questionnaire_answer_path(@questionnaire, ans)
+        - elsif sec.prev_complete?( ii, @questionnaire )
+          %li
+            =link_to str, new_user_questionnaire_answer_path(@questionnaire)
         - else 
           %li
             =link_to str, '#', {:style=>'color:#D8D8D8;', :class => "css_class"}
 
 %p
 
+=# display within-section progress 
 - rems = currsec.questions.where( "questions.id > ?", @question.id ).order("id asc").count
 - tots = currsec.questions.count
 - nums = tots - rems
