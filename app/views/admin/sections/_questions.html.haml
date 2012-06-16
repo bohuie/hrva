@@ -12,7 +12,7 @@
     %th
       Actions 
 
-  - @questions.each do |question| 
+  - @questions.sort_by{|q| q.id}.each do |question| 
     %tr
       %td
         = question.item 
