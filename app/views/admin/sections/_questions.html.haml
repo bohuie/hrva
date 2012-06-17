@@ -17,7 +17,7 @@
   - @questions.each do |question| 
     %tr
       %td
-        = question.order_id
+        = question.order_id - (@section.order_id * 1000)
       %td
         = question.item 
       %td

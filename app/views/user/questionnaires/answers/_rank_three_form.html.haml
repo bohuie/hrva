@@ -1,0 +1,14 @@
+%p
+
+%table{:cellpadding=>'10'}
+  = f.fields_for :multianswers do |m|
+    %tr
+      %td{:valign=>'center'}
+        = m.hidden_field :response_id 
+        = m.select :value, 
+          Multianswer.top3.map{ |c| [c.to_s, c]}, 
+          :include_blank => 'Not Applicable'
+        &nbsp;
+        = "#{m.object.response.label}"
+
+

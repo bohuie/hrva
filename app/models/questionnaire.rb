@@ -30,7 +30,7 @@ class Questionnaire < ActiveRecord::Base
         ans.multianswers.build :response=>r, :selected=>'false'
       end
     end
-    if question.qtype == 'ranking'
+    if question.qtype == 'rank_five' || question.qtype == 'rank_three'
       question.responses.each do |r|
         ans.multianswers.build :response=>r, :selected=>'false', :value=>'0'
       end

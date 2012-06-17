@@ -10,4 +10,8 @@ class Multianswer < ActiveRecord::Base
   def self.top5
     ['1'.to_sym, '2'.to_sym, '3'.to_sym, '4'.to_sym, '5'.to_sym]
   end
+
+  def self.top3
+    ['1'.to_sym, '2'.to_sym, '3'.to_sym]
+  end
 end

@@ -35,8 +35,11 @@
             - elsif @question.qtype == 'many_responses'
               = render :partial => 'checkbox_form', :locals=>{:f=>f}
 
-            - elsif @question.qtype == 'ranking'
+            - elsif @question.qtype == 'rank_five'
               = render :partial => 'ranking_form',  :locals=>{:f=>f}
+
+            - elsif @question.qtype == 'rank_three'
+              = render :partial => 'rank_three_form',  :locals=>{:f=>f}
 
             - else
               = render :partial => 'text_form',     :locals=>{:f=>f}
