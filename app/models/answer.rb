@@ -39,6 +39,9 @@ private
     elsif self.question.qtype == 'likert_scale' && self.response_id.nil?
       errors.add(:base, 'Please fill in an answer before leaving this page.' )
       return false
+    elsif self.question.qtype == 'ranking' && self.response_id.nil?
+      errors.add(:base, 'Please fill in an answer before leaving this page.' )
+      return false
     end
   end
 

@@ -42,7 +42,7 @@
 %p
 
 =# display within-section progress 
-- rems = currsec.questions.where( "questions.id > ?", @question.id ).order("id asc").count
+- rems = currsec.questions.where( "questions.order_id > ?", @question.order_id ).order("order_id asc").count
 - tots = currsec.questions.count
 - nums = tots - rems
 - perc = nums.to_f / tots * 100

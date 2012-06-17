@@ -18,6 +18,6 @@ module ApplicationHelper
   end
 
   def display_your_area(text)
-    text.gsub( /(.*) your area(.*)/, "\\1 #{current_user.city}\\2" )
+    text.gsub( /your area/, "#{current_user.city}" )
   end
 end

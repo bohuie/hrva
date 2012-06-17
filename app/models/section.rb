@@ -1,7 +1,7 @@
 class Section < ActiveRecord::Base
   attr_accessible :description, :title, :order_id
 
-  has_many :questions
+  has_many :questions, :order => 'order_id asc'
 
   validates_presence_of :title, :order_id
 

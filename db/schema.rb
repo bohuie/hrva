@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616160149) do
+ActiveRecord::Schema.define(:version => 20120616232206) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -34,11 +34,13 @@ ActiveRecord::Schema.define(:version => 20120616160149) do
     t.boolean  "selected"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "value"
   end
 
   add_index "multianswers", ["answer_id"], :name => "index_multianswers_on_answer_id"
   add_index "multianswers", ["response_id"], :name => "index_multianswers_on_response_id"
   add_index "multianswers", ["selected"], :name => "index_multianswers_on_selected"
+  add_index "multianswers", ["value"], :name => "index_multianswers_on_value"
 
   create_table "questionnaires", :force => true do |t|
     t.integer  "user_id"
@@ -53,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20120616160149) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "section_id"
+    t.integer  "order_id"
   end
 
+  add_index "questions", ["order_id"], :name => "index_questions_on_order_id"
   add_index "questions", ["section_id"], :name => "index_questions_on_section_id"
 
   create_table "responses", :force => true do |t|

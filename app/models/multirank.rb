@@ -1,6 +1,6 @@
-class Multianswer < ActiveRecord::Base
-  attr_accessible :answer_id, :response_id, :selected, :response, :value
-  
+class Multirank < ActiveRecord::Base
+  attr_accessible :answer_id, :response_id, :value, :response
+
   belongs_to  :response
   belongs_to  :answer
 

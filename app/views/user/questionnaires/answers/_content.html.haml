@@ -22,30 +22,24 @@
     = form_for([:user, @questionnaire, @answer], :html=>{:class=>'form-stacked', :id=>'new_answer'}) do |f| 
       = f.hidden_field :question_id
       = hidden_field_tag :save_and_exit, :id=>'save_and_exit'
-      - if @question.qtype == 'likert_scale'
-        %table{:width=>'100%'}
-          %tr
-            %td{:width=>'3%'}
-            %td
-              = render :partial => 'likert_form', :locals=>{:f=>f}
-      - elsif @question.qtype == 'one_response'
-        %table{:width=>'100%'}
-          %tr
-            %td{:width=>'3%'}
-            %td
-              = render :partial => 'radio_form', :locals=>{:f=>f}
-      - elsif @question.qtype == 'many_responses'
-        %table{:width=>'100%'}
-          %tr
-            %td{:width=>'3%'}
-            %td
-              = render :partial => 'checkbox_form',  :locals=>{:f=>f}
-      - else
-        %table{:width=>'100%'}
-          %tr
-            %td{:width=>'3%'}
-            %td
-              = render :partial => 'text_form',  :locals=>{:f=>f}
+      %table{:width=>'100%'}
+        %tr
+          %td{:width=>'3%'}
+          %td
+            - if @question.qtype == 'likert_scale'
+              = render :partial => 'likert_form',   :locals=>{:f=>f}
+
+            - elsif @question.qtype == 'one_response'
+              = render :partial => 'radio_form',    :locals=>{:f=>f}
+
+            - elsif @question.qtype == 'many_responses'
+              = render :partial => 'checkbox_form', :locals=>{:f=>f}
+
+            - elsif @question.qtype == 'ranking'
+              = render :partial => 'ranking_form',  :locals=>{:f=>f}
+
+            - else
+              = render :partial => 'text_form',     :locals=>{:f=>f}
       
 = render 'footer'
 

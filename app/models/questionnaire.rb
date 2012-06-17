@@ -8,16 +8,16 @@ class Questionnaire < ActiveRecord::Base
     @a = self.answers.last
     if @a
       # continuing the survey 
-      return Question.where( "id > ?", @a.question_id ).order("id asc").first, @a
+      return Question.where( "order_id > ?", @a.question.order_id ).order("order_id asc").first, @a
     else
       # starting the survey for the first time
       return Question.first, nil
     end
   end
 
-  def prev( ans )
-    answers.where( "id < ?", ans.id ).order("id asc").last
-  end
+# def prev( ans )
+#   answers.where( "id < ?", ans.id ).order("id asc").last
+# end
 
   def complete?
     self.answers.count == Question.count
@@ -28,6 +28,11 @@ class Questionnaire < ActiveRecord::Base
     if question.qtype == 'many_responses'
       question.responses.each do |r|
         ans.multianswers.build :response=>r, :selected=>'false'
+      end
+    end
+    if question.qtype == 'ranking'
+      question.responses.each do |r|
+        ans.multianswers.build :response=>r, :selected=>'false', :value=>'0'
       end
     end
     return ans

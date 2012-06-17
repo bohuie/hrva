@@ -4,11 +4,11 @@ class User::Questionnaires::AnswersController < ApplicationController
 
   def new 
     @questionnaire       = Questionnaire.find params[:questionnaire_id]
-    @question, @previous = @questionnaire.next
-    @answer              = @questionnaire.build_answer @question
-
     if @questionnaire.complete?
       redirect_to thankyou_path
+    else
+      @question, @previous = @questionnaire.next
+      @answer              = @questionnaire.build_answer @question
     end
   end
 
@@ -34,7 +34,7 @@ class User::Questionnaires::AnswersController < ApplicationController
     @answer        = @questionnaire.answers.find params[:id]
     @answer.build_multianswers_if_none
     @question      = @answer.question
-    @previous      = @questionnaire.prev( @answer )
+    @previous      = @answer.prev #@questionnaire.prev( @answer )
   end
 
   def update
