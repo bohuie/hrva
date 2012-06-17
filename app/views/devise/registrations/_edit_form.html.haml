@@ -5,27 +5,29 @@
   For privacy reasons, your current password is needed to update your profile.
 %p
 %br
-=f.input :username
--if !controller.is_a?(AdminController)
-  =f.input :current_password, :required => true
+= f.input :username
+- if !controller.is_a?(AdminController)
+  = f.input :current_password, :required => true
 %h3
   Personal Information
 .big
   Update any fields in this section as desired.
 %p
 %br
-=f.input :first_name
-=f.input :last_name
-=f.input :organization, :label => 'Affiliation'
-=f.input :current_role, :label => 'Position Title'
-=f.input :city, :label => 'Area or Region You Represent'
-=f.input :province, :label => 'State/Province'
-=f.input :country, :priority => ['Canada']
--if current_user.try(:admin?) && controller.is_a?(AdminController)
-  =f.input :admin
-  =f.input :active  
-=f.input :email
-=f.input :phone, :label => 'Contact Phone'
+= f.input :first_name
+= f.input :last_name
+= f.input :organization, :label => 'Affiliation'
+= f.input :current_role, :label => 'Position Title'
+= f.input :region_id, 
+  :label => 'Area or Region You Represent',
+  :collection => Region.all.sort_by{|r| r.label}.map {|r| [r.label.to_s.humanize, r.id]}
+= f.input :province, :label => 'State/Province'
+= f.input :country, :priority => ['Canada']
+- if current_user.try(:admin?) && controller.is_a?(AdminController)
+  = f.input :admin
+  = f.input :active  
+= f.input :email
+= f.input :phone, :label => 'Contact Phone'
 %br
 %h3  
   New Password
@@ -33,8 +35,8 @@
   Leave these fields blank if you don't want to change your current password.
 %p
 %br
-=f.input :password, :as => :password
-=f.input :password_confirmation, :as => :password  
+= f.input :password, :as => :password
+= f.input :password_confirmation, :as => :password  
 %br
 %br
 %center

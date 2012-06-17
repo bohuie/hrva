@@ -1,0 +1,17 @@
+= provide(:title, 'New Region') 
+
+.page-header
+  %h1
+    Create New Region
+
+.right
+  = link_to 'Back to Regions Listing', admin_regions_path 
+%p
+%br
+%br
+
+= simple_form_for([:admin, @region]) do |f| 
+  = f.error_notification 
+  = render :partial => 'form', :locals=>{:f=>f}
+
+

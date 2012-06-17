@@ -1,0 +1,32 @@
+= provide(:title, 'Show Region') 
+
+.page-header
+  %h1
+    Region Details
+
+=#<p id="notice"><%= notice %></p>
+
+.right
+  = link_to 'Edit Region', edit_admin_region_path(@section) 
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Regions Listing', admin_regions_path 
+%p
+%br
+%br
+
+%p
+  %b
+    Label:
+%p
+= @region.label 
+
+%p
+%br
+  %b
+    Users Representing This Region:
+%p
+- @region.users.each do |u| 
+  = u.display_name
+  %p
+

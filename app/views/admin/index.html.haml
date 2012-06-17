@@ -1,13 +1,18 @@
+= provide(:title, 'Admin') 
+
 .page-header
   %h1
-    =Admin
+    Admin
     %small
       Manage the website
   
 .big
   %ul
     %li
-      =link_to 'User accounts', admin_users_path
+      =link_to 'User Accounts', admin_users_path
     %p
     %li
       =link_to 'Sections Listing with Associated Questions', admin_sections_path
+    %p
+    %li
+      =link_to 'Regions Represented by Users', admin_regions_path

@@ -1,5 +1,7 @@
 NewApp::Application.routes.draw do
 
+  resources :regions
+
   resources :multianswers
 
   resources :responses
@@ -24,6 +26,7 @@ NewApp::Application.routes.draw do
   
   namespace :admin do
     resources :users
+    resources :regions 
     resources :sections do
       scope :module => 'sections' do
         resources :questions do

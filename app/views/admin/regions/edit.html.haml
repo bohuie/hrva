@@ -1,0 +1,19 @@
+= provide(:title, 'Edit Region') 
+
+.page-header
+  %h1
+    Edit Region 
+
+.right
+  = link_to 'Show Region', admin_region_path(@section)
+  &nbsp;
+  &nbsp;
+  = link_to 'Back to Regions Listing', admin_regions_path 
+%p
+%br
+%br
+
+= simple_form_for([:admin, @region]) do |f| 
+  = f.error_notification 
+  = render :partial => 'form', :locals=>{:f=>f}
+

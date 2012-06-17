@@ -7,12 +7,12 @@ class User < ActiveRecord::Base
   attr_accessor :login
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :admin, :active, :first_name, :last_name, :phone,
-                  :address, :country, :province, :city, :organization, :current_role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :admin, :active, :first_name, :last_name, :phone, :address, :country, :province, :organization, :current_role, :region_id
   
-  has_many :questionnaires
+  belongs_to :region 
+  has_many   :questionnaires
 
-  validates_presence_of :username, :email, :first_name, :last_name, :organization, :current_role, :country, :province, :city, :phone
+  validates_presence_of :username, :email, :first_name, :last_name, :organization, :current_role, :country, :province, :phone, :region_id
   validates_uniqueness_of :username
   
   before_create :set_active
