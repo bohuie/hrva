@@ -7,3 +7,11 @@
         &nbsp;
         = "#{m.object.response.label}"
 
+        - if m.object.response.definition
+          %p
+          %table{:cellpadding=>2}
+            %tr
+              %td{:width=>23}
+              %td
+                = m.object.response.definition
+

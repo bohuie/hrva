@@ -11,6 +11,8 @@
     %th
       Label
     %th
+      Definition
+    %th
       Actions
 
   - @responses.each do |response|
@@ -19,6 +21,8 @@
         = response.value 
       %td
         = response.label 
+      %td
+        = response.definition
       %td{:width=>'20%'}
         %span{:style => 'white-space: nowrap'}
           .center
