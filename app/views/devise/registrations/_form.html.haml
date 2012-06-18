@@ -11,7 +11,9 @@
 =f.input :organization, :label => 'Affiliation'
 =f.input :current_role, :label => 'Position Title'
 -#f.input :address, :input_html => {:rows => 4}
-=f.input :city,     :label => 'Area or Region You Represent'
+= f.input :region_id, 
+  :label => 'Area or Region You Represent',
+  :collection => Region.all.sort_by{|r| r.label}.map {|r| [r.label.to_s.humanize, r.id]}
 =f.input :province, :label => 'State/Province'
 =f.input :country, :priority => ['Canada']
 -if current_user.try(:admin?) && controller.is_a?(AdminController)
