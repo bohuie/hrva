@@ -8,6 +8,7 @@ class Questionnaire < ActiveRecord::Base
     @a = self.answers.last
     if @a
       # continuing the survey 
+      # xxx - supplement this s.t. it filters out questions with parent questions that have wrong response value
       return Question.where( "order_id > ?", @a.question.order_id ).order("order_id asc").first, @a
     else
       # starting the survey for the first time
