@@ -12,7 +12,7 @@ class Questionnaire < ActiveRecord::Base
       return Question.where( "order_id > ?", @a.question.order_id ).order("order_id asc").first, @a
     else
       # starting the survey for the first time
-      return Question.first, nil
+      return Question.order("order_id asc").first, nil
     end
   end
 
