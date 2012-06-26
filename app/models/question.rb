@@ -17,9 +17,9 @@ private
   # ensure parent_question_id and parent_response_value are either
   # both present or both missing
   def parents_matches
-    if self.parent_question_id && self.parent_response_value
+    if self.parent_question_id.present? && self.parent_response_value.present?
       return true
-    elsif self.parent_question_id.nil? && self.parent_response_value.nil?
+    elsif !self.parent_question_id.present? && !self.parent_response_value.present?
       return true
     else
       errors.add(:parent_question_id, 'Please ensure parent question ID and parent response value are both present or both absent.' )
