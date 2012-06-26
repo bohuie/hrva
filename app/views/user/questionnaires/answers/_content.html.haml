@@ -1,12 +1,17 @@
 = render 'header'
 
 - if !@question.instruction.blank?
-  %h3
-    Instructions:
-  %h4
-    = raw display_content_with_links( @question.instruction )
-  %br
-
+  - if @question.order_id > 2003 && @question.order_id < 3000 
+    %h3
+      ="#{@question.instruction}:"
+    %br
+  - else
+    %h3
+      Instructions:
+    %h4
+      = raw display_content_with_links( @question.instruction )
+    %br
+  
 .well
   %h3
     = display_your_area( @question.item )
