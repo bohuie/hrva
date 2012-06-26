@@ -24,6 +24,13 @@
 %p
 %br
   %b
+    Question Id:
+%p
+= @question.id 
+
+%p
+%br
+  %b
     Item:
 %p
 = @question.item
@@ -44,6 +51,16 @@
   None
 - else
   = @question.instruction
+
+%p
+%br
+  %b
+    Question Dependency: 
+%p
+- if @question.parent_question_id.blank? 
+  None
+- else
+  ="#{@question.parent_question_id} must be #{@question.parent_response_value}"
 
 %p
 %br

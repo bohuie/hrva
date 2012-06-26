@@ -4,11 +4,15 @@
     %th
       Order Id
     %th
+      Question Id
+    %th
       Item 
     %th
       Type 
     %th
       Instruction
+    %th
+      Question Dependency
     %th
       Number of Response Labels
     %th
@@ -19,11 +23,18 @@
       %td
         = question.order_id - (@section.order_id * 1000)
       %td
+        = question.id 
+      %td
         = question.item 
       %td
         = question.qtype.to_s.humanize
       %td
         = question.instruction 
+      %td
+        - if question.parent_question_id.blank? 
+          None
+        - else
+          ="#{question.parent_question_id} must be #{question.parent_response_value}"
       %td
         = question.responses.count
       %td{:width=>'20%'}

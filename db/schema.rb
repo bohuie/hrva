@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617024305) do
+ActiveRecord::Schema.define(:version => 20120626030638) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -52,13 +52,17 @@ ActiveRecord::Schema.define(:version => 20120617024305) do
     t.text     "item"
     t.string   "qtype"
     t.text     "instruction"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "section_id"
     t.integer  "order_id"
+    t.integer  "parent_question_id"
+    t.integer  "parent_response_value"
   end
 
   add_index "questions", ["order_id"], :name => "index_questions_on_order_id"
+  add_index "questions", ["parent_question_id"], :name => "index_questions_on_parent_question_id"
+  add_index "questions", ["parent_response_value"], :name => "index_questions_on_parent_response_value"
   add_index "questions", ["section_id"], :name => "index_questions_on_section_id"
 
   create_table "regions", :force => true do |t|
