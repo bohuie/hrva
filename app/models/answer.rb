@@ -13,6 +13,7 @@ class Answer < ActiveRecord::Base
   accepts_nested_attributes_for :multianswers
 
   before_save :set_response_value
+  after_save  :remove_old_answers
 
   scope :find_answer_for_question, lambda{|pq| {:conditions => {:question_id => pq}}}
 
@@ -22,7 +23,10 @@ class Answer < ActiveRecord::Base
   end
 
   def next
-    return self.questionnaire.answers.where( "id > ?", self.id ).order("id asc").first
+    question_set = Question.where( "order_id > ?", self.question.order_id ).order("order_id asc").all 
+    question_set.reject!{ |q| self.questionnaire.filter_question?(q) }
+    question = question_set.first
+    return self.questionnaire.answers.find_answer_for_question( question ).first
   end
 
   def build_multianswers_if_none
@@ -55,5 +59,12 @@ private
 
   def set_response_value
     self.response_value = self.response.try( :value )
+  end
+
+  def remove_old_answers
+    self.question.child_questions.select{|q| self.questionnaire.filter_question?(q)}.each do |q| 
+      ans = self.questionnaire.answers.find_answer_for_question( q )
+      ans.first.try( :destroy )
+    end
   end
 end

@@ -5,16 +5,25 @@ class Questionnaire < ActiveRecord::Base
   has_many   :answers
 
   def next
-    @a = self.answers.last
-    if @a
-      # continuing the survey 
-      question_set = Question.where( "order_id > ?", @a.question.order_id ).order("order_id asc").all 
-      question_set.reject!{ |q| self.filter_question?(q) }
-      return question_set.first, @a
-    else
-      # starting the survey for the first time
-      return Question.order("order_id asc").first, nil
+    # @a = self.answers.last
+    # if @a
+    # continuing the survey 
+    question_set = Question.order("order_id asc").all 
+    question_set.reject!{ |q| self.filter_question?(q) }
+    # return question_set.first, @a
+    prev_ans = nil
+    question_set.each do |q|
+      ans = self.answers.find_answer_for_question( q ).first
+      if ans.nil?
+        return  q, prev_ans 
+      end
+      prev_ans = ans
     end
+
+    # else
+    # starting the survey for the first time
+    return Question.order("order_id asc").first, nil
+    # end
   end
 
 # def prev( ans )
@@ -40,6 +49,8 @@ class Questionnaire < ActiveRecord::Base
     return ans
   end
 
+  # filters questions that don't need to be displayed/answered because 
+  # parent question had specific values
   def filter_question?( q )
     return false if q.parent_question_id.blank?
     # if there is parent_question_id, check response value in its answer

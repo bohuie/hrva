@@ -2,6 +2,8 @@ class Question < ActiveRecord::Base
   attr_accessible :instruction, :item, :qtype, :order_id, :parent_question_id, :parent_response_value
 
   belongs_to :section
+  belongs_to :parent_question, :class_name=>'Question', :foreign_key=>:parent_question_id
+  has_many   :child_questions, :class_name=>'Question', :foreign_key=>:parent_question_id
   has_many   :responses, :order=>'value asc'
   has_many   :answers
 

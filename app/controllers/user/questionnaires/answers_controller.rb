@@ -21,7 +21,11 @@ class User::Questionnaires::AnswersController < ApplicationController
       if params[:save_and_exit] == 'true'
         redirect_to returnsoon_path
       else
-        redirect_to new_user_questionnaire_answer_path
+        if @answer.next
+          redirect_to edit_user_questionnaire_answer_path( @questionnaire, @answer.next )
+        else
+          redirect_to new_user_questionnaire_answer_path
+        end
       end
     else
       flash[:error] = @answer.errors.full_messages.to_sentence
