@@ -12,6 +12,10 @@ class Answer < ActiveRecord::Base
 
   accepts_nested_attributes_for :multianswers
 
+  before_save :set_response_value
+
+  scope :find_answer_for_question, lambda{|pq| {:conditions => {:question_id => pq}}}
+
   def prev
     return self.questionnaire.answers.last unless self.id
     return self.questionnaire.answers.where( "id < ?", self.id ).order("id asc").last
@@ -24,9 +28,13 @@ class Answer < ActiveRecord::Base
   def build_multianswers_if_none
     if self.question.qtype == 'many_responses' && self.multianswers.empty?
       self.question.responses.each do |r|
-        self.multianswers.build :response=>r, :selected=>'false'
+        self.multianswers.build :response=>r, :selected=>'false', :value=>r.value
       end
     end
+  end
+
+  def get_responses_array
+    ([self.response_value] + self.multianswers.map {|ma| ma.value}).compact
   end
 
 private
@@ -45,4 +53,7 @@ private
     end
   end
 
+  def set_response_value
+    self.response_value = self.response.try( :value )
+  end
 end

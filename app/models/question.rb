@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
   validates_presence_of :item, :qtype, :order_id
   validate   :parents_matches
   validate   :parents_values 
-
+ 
   def self.qtypes
     ['likert_scale'.to_sym, 'one_response'.to_sym, 'many_responses'.to_sym, 'rank_five'.to_sym, 'rank_three'.to_sym, 'text_response'.to_sym]
   end
