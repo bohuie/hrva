@@ -38,7 +38,8 @@ class Answer < ActiveRecord::Base
   end
 
   def get_responses_array
-    ([self.response_value] + self.multianswers.map {|ma| ma.value}).compact
+    ([self.response_value] + 
+      self.multianswers.select{|ma| ma.selected?}.map {|ma| ma.value}).compact
   end
 
 private
