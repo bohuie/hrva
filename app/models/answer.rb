@@ -15,7 +15,7 @@ class Answer < ActiveRecord::Base
   before_save :set_response_value
   after_save  :remove_old_answers
 
-  scope :find_answer_for_question, lambda{|pq| {:conditions => {:question_id => pq}}}
+  scope :find_answer_for_question, lambda{|pq| {:include => :multianswers, :conditions => {:question_id => pq}}}
 
   def prev
     return self.questionnaire.answers.last unless self.id

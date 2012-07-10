@@ -8,7 +8,7 @@ class Questionnaire < ActiveRecord::Base
     # @a = self.answers.last
     # if @a
     # continuing the survey 
-    question_set = Question.order("order_id asc").all 
+    question_set = Question.order("order_id asc").all
     question_set.reject!{ |q| self.filter_question?(q) }
     # return question_set.first, @a
     prev_ans = nil
@@ -68,7 +68,7 @@ class Questionnaire < ActiveRecord::Base
     parent_question = Question.find( q.parent_question_id )
     parent_answer   = self.answers.find_answer_for_question( parent_question ).first
     # if question has no answer yet
-    return false if parent_answer.empty?
+    return true if parent_answer.nil?
 
     if parent_answer.get_responses_array.include?( q.parent_response_value )
       return false   # don't filter
