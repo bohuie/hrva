@@ -68,7 +68,7 @@ class Questionnaire < ActiveRecord::Base
     parent_question = Question.find( q.parent_question_id )
     parent_answer   = self.answers.find_answer_for_question( parent_question ).first
     # if question has no answer yet
-    return false if parent_answer.nil?
+    return false if parent_answer.empty?
 
     if parent_answer.get_responses_array.include?( q.parent_response_value )
       return false   # don't filter
