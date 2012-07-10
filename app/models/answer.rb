@@ -23,7 +23,7 @@ class Answer < ActiveRecord::Base
   end
 
   def next
-    question_set = Question.where( "order_id > ?", self.question.order_id ).order("order_id asc").all 
+    question_set = Question.where( "order_id > ?", self.question.order_id ).order("order_id asc").all(:include => :parent_question)
     question_set.reject!{ |q| self.questionnaire.filter_question?(q) }
     question = question_set.first
     return self.questionnaire.answers.find_answer_for_question( question ).first
@@ -90,7 +90,7 @@ private
   end
 
   def remove_old_answers
-    self.question.child_questions.select{|q| self.questionnaire.filter_question?(q)}.each do |q| 
+    self.question.child_questions(:include => :parent_question).select{|q| self.questionnaire.filter_question?(q)}.each do |q| 
       ans = self.questionnaire.answers.find_answer_for_question( q )
       ans.first.try( :destroy )
     end

@@ -8,7 +8,7 @@ class Questionnaire < ActiveRecord::Base
     # @a = self.answers.last
     # if @a
     # continuing the survey 
-    question_set = Question.order("order_id asc").all
+    question_set = Question.order("order_id asc").all(:include => :parent_question)
     question_set.reject!{ |q| self.filter_question?(q) }
     # return question_set.first, @a
     prev_ans = nil
@@ -32,7 +32,7 @@ class Questionnaire < ActiveRecord::Base
 
   def complete?
 #   self.answers.count == Question.count
-    question_set = Question.order("order_id asc").all 
+    question_set = Question.order("order_id asc").all(:include => :parent_question)
     question_set.reject!{ |q| self.filter_question?(q) }
 
     question_set.each do |q|
@@ -65,9 +65,9 @@ class Questionnaire < ActiveRecord::Base
   def filter_question?( q )
     return false if q.parent_question_id.blank?
     # if there is parent_question_id, check response value in its answer
-    parent_question = Question.find( q.parent_question_id )
+    parent_question = q.parent_question
     parent_answer   = self.answers.find_answer_for_question( parent_question ).first
-    # if question has no answer yet
+    # if question has no answer (e.g. embedded dependency)
     return true if parent_answer.nil?
 
     if parent_answer.get_responses_array.include?( q.parent_response_value )
