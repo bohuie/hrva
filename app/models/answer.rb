@@ -4,7 +4,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :response
   belongs_to :questionnaire
-  has_many   :multianswers, :include => :response, :order => 'responses.value asc'
+  has_many   :multianswers, :include => :response, :order => 'responses.value asc', :dependent => :destroy
 
   validates_presence_of :questionnaire_id, :question_id
   validate :answer_present
@@ -51,9 +51,36 @@ private
     elsif self.question.qtype == 'likert_scale' && self.response_id.nil?
       errors.add(:base, 'Please fill in an answer before leaving this page.' )
       return false
-    elsif self.question.qtype == 'rank_five' && self.response_id.nil?
-      errors.add(:base, 'Please fill in an answer before leaving this page.' )
-      return false
+
+    elsif self.question.qtype == 'rank_three' 
+      responses = self.multianswers.map( &:rank ).compact
+      if responses.length == 3 
+        array_wanted = [1, 2, 3]
+        if array_wanted == responses.sort
+          return true
+        else 
+          errors.add(:base, 'Please ensure all items are unique.' )
+          return false
+        end 
+      else 
+        errors.add(:base, 'Please ensure 3 items are ranked.' )
+        return false
+      end
+
+    elsif self.question.qtype == 'rank_five' 
+      responses = self.multianswers.map( &:rank ).compact
+      if responses.length == 5 
+        array_wanted = [1, 2, 3, 4, 5]
+        if array_wanted == responses.sort
+          return true
+        else 
+          errors.add(:base, 'Please ensure all items are unique.' )
+          return false
+        end 
+      else 
+        errors.add(:base, 'Please ensure 5 items are ranked.' )
+        return false
+      end
     end
   end
 

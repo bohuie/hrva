@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626030638) do
+ActiveRecord::Schema.define(:version => 20120709235548) do
 
   create_table "answers", :force => true do |t|
-    t.integer  "question_id"
-    t.integer  "response_id"
-    t.text     "response_text"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "questionnaire_id"
-    t.integer  "response_value"
+    t.integer   "question_id"
+    t.integer   "response_id"
+    t.text      "response_text"
+    t.timestamp "created_at",       :null => false
+    t.timestamp "updated_at",       :null => false
+    t.integer   "questionnaire_id"
+    t.integer   "response_value"
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(:version => 20120626030638) do
   add_index "answers", ["response_value"], :name => "index_answers_on_response_value"
 
   create_table "multianswers", :force => true do |t|
-    t.integer  "response_id"
-    t.integer  "answer_id"
-    t.boolean  "selected"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "value"
+    t.integer   "response_id"
+    t.integer   "answer_id"
+    t.boolean   "selected"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.integer   "value"
+    t.integer   "rank"
   end
 
   add_index "multianswers", ["answer_id"], :name => "index_multianswers_on_answer_id"
@@ -43,21 +44,21 @@ ActiveRecord::Schema.define(:version => 20120626030638) do
   add_index "multianswers", ["value"], :name => "index_multianswers_on_value"
 
   create_table "questionnaires", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "questions", :force => true do |t|
-    t.text     "item"
-    t.string   "qtype"
-    t.text     "instruction"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "section_id"
-    t.integer  "order_id"
-    t.integer  "parent_question_id"
-    t.integer  "parent_response_value"
+    t.text      "item"
+    t.string    "qtype"
+    t.text      "instruction"
+    t.timestamp "created_at",            :null => false
+    t.timestamp "updated_at",            :null => false
+    t.integer   "section_id"
+    t.integer   "order_id"
+    t.integer   "parent_question_id"
+    t.integer   "parent_response_value"
   end
 
   add_index "questions", ["order_id"], :name => "index_questions_on_order_id"
@@ -66,59 +67,59 @@ ActiveRecord::Schema.define(:version => 20120626030638) do
   add_index "questions", ["section_id"], :name => "index_questions_on_section_id"
 
   create_table "regions", :force => true do |t|
-    t.string   "label"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "label"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "responses", :force => true do |t|
-    t.string   "label"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "question_id"
-    t.integer  "value"
-    t.text     "definition"
+    t.string    "label"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.integer   "question_id"
+    t.integer   "value"
+    t.text      "definition"
   end
 
   add_index "responses", ["question_id"], :name => "index_responses_on_question_id"
   add_index "responses", ["value"], :name => "index_responses_on_value"
 
   create_table "sections", :force => true do |t|
-    t.string   "title"
-    t.text     "description", :limit => 16777215
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.integer  "order_id"
+    t.string    "title"
+    t.text      "description"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.integer   "order_id"
   end
 
   add_index "sections", ["order_id"], :name => "index_sections_on_order_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",   :null => false
-    t.string   "encrypted_password",     :default => "",   :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "username"
-    t.boolean  "admin"
-    t.boolean  "active",                 :default => true
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "current_role"
-    t.string   "organization"
-    t.text     "address"
-    t.string   "city"
-    t.string   "province"
-    t.string   "country"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-    t.string   "phone"
-    t.integer  "region_id"
+    t.string    "email",                  :default => "",   :null => false
+    t.string    "encrypted_password",     :default => "",   :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",          :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.string    "username"
+    t.boolean   "admin"
+    t.boolean   "active",                 :default => true
+    t.string    "first_name"
+    t.string    "last_name"
+    t.string    "current_role"
+    t.string    "organization"
+    t.text      "address"
+    t.string    "city"
+    t.string    "province"
+    t.string    "country"
+    t.timestamp "created_at",                               :null => false
+    t.timestamp "updated_at",                               :null => false
+    t.string    "phone"
+    t.integer   "region_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

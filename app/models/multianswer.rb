@@ -1,5 +1,5 @@
 class Multianswer < ActiveRecord::Base
-  attr_accessible :answer_id, :response_id, :selected, :response, :value
+  attr_accessible :answer_id, :response_id, :selected, :response, :value, :rank
   
   belongs_to  :response
   belongs_to  :answer

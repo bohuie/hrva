@@ -5,7 +5,7 @@
     %tr
       %td{:valign=>'center'}
         = m.hidden_field :response_id 
-        = m.select :value, 
+        = m.select :rank, 
           Multianswer.top3.map{ |c| [c.to_s, c]}, 
           :include_blank => 'Not Applicable'
         &nbsp;

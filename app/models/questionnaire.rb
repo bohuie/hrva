@@ -31,7 +31,18 @@ class Questionnaire < ActiveRecord::Base
 # end
 
   def complete?
-    self.answers.count == Question.count
+#   self.answers.count == Question.count
+    question_set = Question.order("order_id asc").all 
+    question_set.reject!{ |q| self.filter_question?(q) }
+
+    question_set.each do |q|
+      ans = self.answers.find_answer_for_question( q ).first
+      if ans.nil?
+        return false
+      end
+    end
+
+    return true
   end
 
   def build_answer( question )
