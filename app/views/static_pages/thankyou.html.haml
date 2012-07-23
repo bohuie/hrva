@@ -2,7 +2,7 @@
 
 .page-header
   %h2
-    Assessment Region: 
+    Analysis Region: 
     = current_user.city
 
 .hero-unit
@@ -12,14 +12,14 @@
     %p
     %br
       .big
-        Click the button below to view your assessment results.
+        Click the button below to view your analysis results.
     %p
       =button_to 'Generate Report', '#', :class=>'btn btn-large btn-primary'
 
 
 %p
 .big
-  Please note this assessment is only the first step in preparing your
+  Please note this analysis is only the first step in preparing your
   area for hazards. Please check 
   =link_to 'here', references_path
   for information on how to proceed.

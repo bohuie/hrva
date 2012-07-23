@@ -16,12 +16,11 @@
             %li
               - if current_user.questionnaires.last 
                 - if current_user.questionnaires.last.complete?
-                  = link_to "View Assessment Results", view_report_path
+                  = link_to "View Analysis Results", view_report_path
                 - else
-                  = link_to "Resume Assessment", resume_path
+                  = link_to "Resume Analysis", resume_path
               - else
-                = link_to "Start Assessment", start_path
-          %li= link_to "Help",             help_path 
+                = link_to "Start Analysis", start_path
           %li= link_to "Contact",          contact_path
         %ul.nav.pull-right
           -if current_user.try(:admin?)
