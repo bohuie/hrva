@@ -1,5 +1,5 @@
 class Response < ActiveRecord::Base
-  attr_accessible :label, :value, :definition
+  attr_accessible :label, :value, :definition, :order_id
 
   belongs_to :question
 

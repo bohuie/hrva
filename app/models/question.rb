@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
   belongs_to :section
   belongs_to :parent_question, :class_name=>'Question', :foreign_key=>:parent_question_id
   has_many   :child_questions, :class_name=>'Question', :foreign_key=>:parent_question_id
-  has_many   :responses, :order=>'value asc'
+  has_many   :responses, :order=>'order_id asc'
   has_many   :answers
 
   validates_presence_of :item, :qtype, :order_id

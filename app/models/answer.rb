@@ -4,7 +4,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :response
   belongs_to :questionnaire
-  has_many   :multianswers, :include => :response, :order => 'responses.value asc', :dependent => :destroy
+  has_many   :multianswers, :include => :response, :order => 'responses.order_id asc', :dependent => :destroy
 
   validates_presence_of :questionnaire_id, :question_id
   validate :answer_present
