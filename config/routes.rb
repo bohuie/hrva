@@ -22,6 +22,7 @@ NewApp::Application.routes.draw do
   match '/test',         :to => 'static_pages#test' 
   match '/thankyou',     :to => 'static_pages#thankyou' 
   match '/returnsoon',   :to => 'static_pages#returnsoon' 
+  match '/definitions',  :to => 'static_pages#definitions'
   
   
   namespace :admin do
